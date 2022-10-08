@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scenes/exitbutton.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/UI/B/03_IconCloseBlue.png" type="Texture" id=2]
+
+[node name="exitbutton" type="Button"]
+margin_right = 71.0
+margin_bottom = 70.0
+icon = ExtResource( 2 )
+flat = true
+align = 2
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="." to="." method="_on_exitbutton_pressed"]
