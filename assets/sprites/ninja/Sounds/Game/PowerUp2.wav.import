@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PowerUp2.wav-c6d6d6de012256207fc600d81c5bf28c.sample"
+
+[deps]
+
+source_file="res://assets/sprites/ninja/Sounds/Game/PowerUp2.wav"
+dest_files=[ "res://.import/PowerUp2.wav-c6d6d6de012256207fc600d81c5bf28c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

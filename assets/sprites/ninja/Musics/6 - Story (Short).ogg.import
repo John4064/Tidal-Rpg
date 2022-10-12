@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/6 - Story (Short).ogg-a20dc0fb1e03bcc104b755e0adae5a10.oggstr"
+
+[deps]
+
+source_file="res://assets/sprites/ninja/Musics/6 - Story (Short).ogg"
+dest_files=[ "res://.import/6 - Story (Short).ogg-a20dc0fb1e03bcc104b755e0adae5a10.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

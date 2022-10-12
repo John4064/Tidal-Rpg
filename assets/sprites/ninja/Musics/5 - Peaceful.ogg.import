@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/5 - Peaceful.ogg-13104928016317d9c3f51a7886a18ef9.oggstr"
+
+[deps]
+
+source_file="res://assets/sprites/ninja/Musics/5 - Peaceful.ogg"
+dest_files=[ "res://.import/5 - Peaceful.ogg-13104928016317d9c3f51a7886a18ef9.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

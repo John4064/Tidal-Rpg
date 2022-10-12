@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/25 - End Theme 2.ogg-ca061bbbe1808fa5caef19c58d1c96ea.oggstr"
+
+[deps]
+
+source_file="res://assets/sprites/ninja/Musics/25 - End Theme 2.ogg"
+dest_files=[ "res://.import/25 - End Theme 2.ogg-ca061bbbe1808fa5caef19c58d1c96ea.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

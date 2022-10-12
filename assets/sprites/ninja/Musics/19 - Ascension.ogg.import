@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/19 - Ascension.ogg-d018401e93be2041a872833ab8b80e05.oggstr"
+
+[deps]
+
+source_file="res://assets/sprites/ninja/Musics/19 - Ascension.ogg"
+dest_files=[ "res://.import/19 - Ascension.ogg-d018401e93be2041a872833ab8b80e05.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

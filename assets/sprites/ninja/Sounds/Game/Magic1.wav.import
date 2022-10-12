@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Magic1.wav-4c39a33a4f95bea95f6dc40b3d70cff8.sample"
+
+[deps]
+
+source_file="res://assets/sprites/ninja/Sounds/Game/Magic1.wav"
+dest_files=[ "res://.import/Magic1.wav-4c39a33a4f95bea95f6dc40b3d70cff8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
