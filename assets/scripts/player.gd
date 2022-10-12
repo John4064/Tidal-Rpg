@@ -5,7 +5,13 @@ export var speed: int = 125
 var score : int = 0
 
 
-
+func animates_player(direction: Vector2):
+	if direction != Vector2.ZERO:
+		# Play walk animation
+		$Sprite.play("walkdown")
+	else:
+		# Play idle animation
+		$Sprite.play("idle")
 
 func _physics_process(delta):
 	# Get player input
