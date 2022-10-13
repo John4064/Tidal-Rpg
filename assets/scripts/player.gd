@@ -1,9 +1,17 @@
 extends KinematicBody2D
 
 export var speed: int = 125
-
+export var dmg = 15
+export var hp = 45
+export var health_regeneration = 1
 var score : int = 0
 var last_direction = Vector2(0, 1)
+var attack_playing = false
+
+
+
+func _on_AnimatedSprite_animation_finished():
+	attack_playing = false
 
 func get_animation_direction(direction: Vector2):
 	var norm_direction = direction.normalized()
@@ -50,18 +58,28 @@ func _physics_process(delta):
 	
 	# Apply movement
 	var movement = speed * direction * delta
+	if attack_playing:
+		movement = 0.3 * movement
 	move_and_collide(movement)
-	
-	
-	
-	
-	
+
 	position.x=clamp(position.x, 16, get_viewport_rect().size[0]-16)
 	position.y = clamp(position.y, 16 , get_viewport_rect().size[1]-16)
-	
 	# Animate player based on direction
-	animates_player(direction)
+	if not attack_playing:
+		animates_player(direction)
+
+	
+func _input(event):
+	if event.is_action_pressed("attack1"):
+		attack_playing = true
+		var animation = "attack"
+		$AnimatedSprite.play(animation)
 	
 func _process(delta):
 	if(score !=0):
 		print_debug(1)
+
+
+
+
+
