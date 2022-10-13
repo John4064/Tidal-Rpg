@@ -87,17 +87,19 @@ radius = 7.0
 height = 8.0
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
 frames = SubResource( 13 )
 animation = "idle"
-frame = 4
 speed_scale = 0.8
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -3, 0 )
+scale = Vector2( 1.5, 1.5 )
 shape = SubResource( 14 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

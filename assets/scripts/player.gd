@@ -3,15 +3,40 @@ extends KinematicBody2D
 export var speed: int = 125
 
 var score : int = 0
+var last_direction = Vector2(0, 1)
 
+func get_animation_direction(direction: Vector2):
+	var norm_direction = direction.normalized()
+	if norm_direction.y >= 0.707:
+		return "down"
+	elif norm_direction.y <= -0.707:
+		return "up"
+	elif norm_direction.x <= -0.707:
+		return "left"
+	elif norm_direction.x >= 0.707:
+		return "right"
+	return "down"
 
 func animates_player(direction: Vector2):
 	if direction != Vector2.ZERO:
-		# Play walk animation
-		$Sprite.play("run")
+		# update last_direction
+		last_direction = direction
+
+		# Choose walk animation based on movement direction
+		#var animation = get_animation_direction(last_direction) + "run"
+		var animation = "run"
+		# Play the walk animation
+		$AnimatedSprite.frames.set_animation_speed(animation, 2 + 8 * direction.length())
+		#Shit code
+		if(get_animation_direction(direction) == "right"):
+			get_node( "AnimatedSprite" ).set_flip_h( false )
+		elif(get_animation_direction(direction) == "left"):
+			get_node( "AnimatedSprite" ).set_flip_h( true )
+		$AnimatedSprite.play(animation)
 	else:
-		# Play idle animation
-		$Sprite.play("idle")
+		# Choose idle animation based on last movement direction and play it
+		var animation = "idle"
+		$AnimatedSprite.play(animation)
 
 func _physics_process(delta):
 	# Get player input
@@ -33,6 +58,9 @@ func _physics_process(delta):
 	
 	position.x=clamp(position.x, 16, get_viewport_rect().size[0]-16)
 	position.y = clamp(position.y, 16 , get_viewport_rect().size[1]-16)
+	
+	# Animate player based on direction
+	animates_player(direction)
 	
 func _process(delta):
 	if(score !=0):
