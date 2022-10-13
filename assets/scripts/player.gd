@@ -8,7 +8,7 @@ var score : int = 0
 func animates_player(direction: Vector2):
 	if direction != Vector2.ZERO:
 		# Play walk animation
-		$Sprite.play("walkdown")
+		$Sprite.play("run")
 	else:
 		# Play idle animation
 		$Sprite.play("idle")
