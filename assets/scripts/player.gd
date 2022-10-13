@@ -1,14 +1,17 @@
 extends KinematicBody2D
 
+#pub var
 export var speed: int = 125
 export var dmg = 15
-export var hp = 45
+export var health = 45
+export var health_max = 45
 export var health_regeneration = 1
+#private var
 var score : int = 0
 var last_direction = Vector2(0, 1)
 var attack_playing = false
-
-
+#signals
+signal player_stats_changed
 
 func _on_AnimatedSprite_animation_finished():
 	attack_playing = false
@@ -78,6 +81,14 @@ func _input(event):
 func _process(delta):
 	if(score !=0):
 		print_debug(1)
+	# Regenerates health
+	var new_health = min(health + health_regeneration * delta, health_max)
+	if new_health != health:
+		health = new_health
+		emit_signal("player_stats_changed", self)
+		
+func _ready():
+	emit_signal("player_stats_changed", self)
 
 
 

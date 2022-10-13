@@ -492,10 +492,11 @@ tile_data = PoolIntArray( -655370, 2, 0, -589835, 2, 0, -589834, 2, 0, -524300, 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Border" type="ColorRect" parent="CanvasLayer"]
-margin_left = 1.0
-margin_top = 1.0
-margin_right = 76.0
-margin_bottom = 11.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 80.0
+margin_bottom = 15.0
+rect_scale = Vector2( 3, 3 )
 color = Color( 0, 0, 0, 0.627451 )
 
 [node name="Health" type="ColorRect" parent="CanvasLayer/Border"]
