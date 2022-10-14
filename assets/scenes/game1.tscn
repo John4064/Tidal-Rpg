@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scenes/rock1.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/tiles/atlas.png" type="Texture" id=5]
 [ext_resource path="res://assets/scripts/HealthBar.gd" type="Script" id=6]
 [ext_resource path="res://assets/fonts/Font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://assets/scenes/enemy1.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 10.0417, 2.04235, 15.0887, 5.87437, 14.8083, 9.51945, 11.1632, 13.3515, 5.8358, 13.7253, 4.34038, 12.4168, 1.34953, 10.0802, 1.34953, 5.22012, 3.68613, 3.16392 )
@@ -548,5 +549,11 @@ position = Vector2( 663, 493 )
 
 [node name="flowers8" parent="Flowers" instance=ExtResource( 3 )]
 position = Vector2( 339, 506 )
+
+[node name="Skeleton" parent="." instance=ExtResource( 8 )]
+position = Vector2( 42, 191 )
+
+[node name="Skeleton2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 252, 92 )
 
 [connection signal="player_stats_changed" from="Player" to="canvas/Border" method="_on_Player_player_stats_changed"]
