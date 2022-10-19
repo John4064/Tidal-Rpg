@@ -6,10 +6,15 @@ export var dmg = 15
 export var health = 45
 export var health_max = 45
 export var health_regeneration = 1
+export var attack_damage = 30
 #private var
 var score : int = 0
 var last_direction = Vector2(0, 1)
 var attack_playing = false
+# Attack variables
+var attack_cooldown_time = 1000
+var next_attack_time = 0
+
 #signals
 signal player_stats_changed
 
@@ -70,14 +75,29 @@ func _physics_process(delta):
 	# Animate player based on direction
 	if not attack_playing:
 		animates_player(direction)
+	# Turn RayCast2D toward movement direction
+	if direction != Vector2.ZERO:
+		$RayCast2D.cast_to = direction.normalized() * 30
 
 	
 func _input(event):
 	if event.is_action_pressed("attack1"):
-		attack_playing = true
-		var animation = "attack"
-		$AnimatedSprite.play(animation)
-	
+		# Check if player can attack
+		var now = OS.get_ticks_msec()
+		if now >= next_attack_time:
+			# What's the target?
+			var target = $RayCast2D.get_collider()
+			if target != null:
+				if target.name.find("Skeleton") >= 0:
+					# Skeleton hit!
+					target.hit(attack_damage)
+			# Play attack animation
+			attack_playing = true
+			var animation = "attack"
+			$AnimatedSprite.play(animation)
+			# Add cooldown time to current time
+			next_attack_time = now + attack_cooldown_time
+		
 func _process(delta):
 	if(score !=0):
 		print_debug(1)
@@ -90,7 +110,14 @@ func _process(delta):
 func _ready():
 	emit_signal("player_stats_changed", self)
 
-
+func hit(damage):
+	health -= damage
+	emit_signal("player_stats_changed", self)
+	if health <= 0:
+		set_process(false)
+		$AnimationPlayer.play("GameOver")
+	else:
+		$AnimationPlayer.play("Hit")
 
 
 
