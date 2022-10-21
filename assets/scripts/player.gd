@@ -8,6 +8,8 @@ export var health_max = 45
 export var health_regeneration = 1
 export var attack_damage = 30
 #private var
+var tilemap
+var animatedPlayer
 var score : int = 0
 var last_direction = Vector2(0, 1)
 var attack_playing = false
@@ -18,6 +20,12 @@ var next_attack_time = 0
 #signals
 signal player_stats_changed
 
+		
+func _ready():
+	emit_signal("player_stats_changed", self)
+	tilemap = get_tree().root.get_node("Root/TileMap")
+	animatedPlayer = get_tree().root.get_node("Root/AnimationPlayer")
+	
 func _on_AnimatedSprite_animation_finished():
 	attack_playing = false
 
@@ -67,11 +75,9 @@ func _physics_process(delta):
 	# Apply movement
 	var movement = speed * direction * delta
 	if attack_playing:
-		movement = 0.3 * movement
+		movement = 0.5 * movement
+	
 	move_and_collide(movement)
-
-	position.x=clamp(position.x, 16, get_viewport_rect().size[0]-16)
-	position.y = clamp(position.y, 16 , get_viewport_rect().size[1]-16)
 	# Animate player based on direction
 	if not attack_playing:
 		animates_player(direction)
@@ -106,16 +112,14 @@ func _process(delta):
 	if new_health != health:
 		health = new_health
 		emit_signal("player_stats_changed", self)
-		
-func _ready():
-	emit_signal("player_stats_changed", self)
+
 
 func hit(damage):
 	health -= damage
 	emit_signal("player_stats_changed", self)
 	if health <= 0:
 		set_process(false)
-		$AnimationPlayer.play("GameOver")
+		animatedPlayer.play("GameOver")
 	else:
 		$AnimationPlayer.play("Hit")
 
